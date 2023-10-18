@@ -1,0 +1,11 @@
+﻿  Bank-System-ConsoleApp.cpp
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(84,47): warning C4305: 'argument': truncation from '__int64' to 'long'
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(84,47): warning C4309: 'argument': truncation of constant value
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(117,38): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(327): warning C4715: 'ChangePinCodeToFileByOldPinCode': not all control paths return a value
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(722): warning C4715: 'UpdateClientByAccountNumber': not all control paths return a value
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(929): warning C4715: 'DeleteClientByAccountNumber': not all control paths return a value
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(960): warning C4715: 'DepositBalanceToClientByAccountNumber': not all control paths return a value
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(1503): warning C4715: 'DeleteUserByUsername': not all control paths return a value
+C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\Bank-System-ConsoleApp.cpp(1570): warning C4715: 'UpdateUserByUsername': not all control paths return a value
+  Bank-System-ConsoleApp.vcxproj -> C:\Users\khali\OneDrive\Desktop\Bank-System-ConsoleApp\x64\Debug\Bank-System-ConsoleApp.exe
