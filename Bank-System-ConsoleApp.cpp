@@ -13,18 +13,18 @@ const string ClientsFileName = "Clients.txt";
 
 const string UsersFileName = "Users.txt";
 
-enum enMainMenueOption { Show = 1, Add, Delete, Update, Find, Transactions, ManageUsers, ATMSystem, Logout };
+enum enMainMenuOption { Show = 1, Add, Delete, Update, Find, Transactions, ManageUsers, ATMSystem, Logout };
 
-enum enTransactionsMenueOption { Deposit = 1, Withdraw, TotalBalances, MainMenue };
+enum enTransactionsMenuOption { Deposit = 1, Withdraw, TotalBalances, MainMenu };
 
-enum enManageUsersMenueOption { ListUsers = 1, AddUsers, DeleteUesrs, UpdateUsers, FindUsers, Main };
+enum enManageUsersMenuOption { ListUsers = 1, AddUsers, DeleteUesrs, UpdateUsers, FindUsers, Main };
 
-enum enMainMenuePermissions {
+enum enMainMenuPermissions {
 	eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
 	pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64, pATMSystem = 128
 };
 
-enum enATMMainMenueOption { QuickWithdarw = 1, NormalWithdarw, ATMDeposit, ATMTotalBalances, ChangePinCode, Mainn };
+enum enATMMainMenuOption { QuickWithdraw = 1, NormalWithdraw, ATMDeposit, ATMTotalBalances, ChangePinCode, Mainn };
 
 struct strClients
 {
@@ -48,15 +48,15 @@ struct strUsers
 strUsers CurrentUser;
 strClients CurrentClient;
 
-void ShowMainMenue();
-void ShowTransactionsMenueScreen();
-void ShowManageUsersSecreen();
-void PerformManageUsersMenueOption(enManageUsersMenueOption);
+void ShowMainMenu();
+void ShowTransactionsMenuScreen();
+void ShowManageUsersScreen();
+void PerformManageUsersMenuOption(enManageUsersMenuOption);
 void Login();
-void ShowATMMainMenueScreen();
+void ShowATMMainMenuScreen();
 void LoginATMSystem();
-void ShowQuickWithdarwScreen();
-void ShowNormalWithdarwScreen();
+void ShowQuickWithdrawScreen();
+void ShowNormalWithdrawScreen();
 
 //void PrintLine(int Length)
 //{
@@ -363,13 +363,13 @@ bool ChangePasswordToFileBySecurityCode(string SecurityCode, string NewPassword,
 
 void GoBackToATMMainScreen()
 {
-	cout << "\n\n\t\t\t\t\t\t\t\tPress any key to go back to ATM Main Menue...";
+	cout << "\n\n\t\t\t\t\t\t\t\tPress any key to go back to ATM Main Menu...";
 	system("pause>0");
 	cout << "\a";
-	ShowATMMainMenueScreen();
+	ShowATMMainMenuScreen();
 }
 
-short ReadATMMainMenueOption()
+short ReadATMMainMenuOption()
 {
 	short Choice = 0;
 	cout << "\n\t\t\t\t\t\t\t\tChoose what do want to do? [1 to 6]? ";
@@ -388,29 +388,29 @@ string ReadPinCode()
 
 void GoBackToMainScreen()
 {
-	cout << "\n\t\t\t\t\t\t\t\tPress any key to go back to Main Menue...";
+	cout << "\n\t\t\t\t\t\t\t\tPress any key to go back to Main Menu...";
 	system("pause>0");
 	cout << "\a";
-	ShowMainMenue();
+	ShowMainMenu();
 }
 
 void GoBackToTransactionScreen()
 {
-	cout << "\n\n\t\t\t\t\t\t\t\tPress any key to go back to Transaction Menue...";
+	cout << "\n\n\t\t\t\t\t\t\t\tPress any key to go back to Transaction Menu...";
 	system("pause>0");
 	cout << "\a";
-	ShowTransactionsMenueScreen();
+	ShowTransactionsMenuScreen();
 }
 
 void GoBackToManageUsersScreen()
 {
-	cout << "\n\t\t\t\t\t\t\t\tPress any key to go back to Manage Users Menue...";
+	cout << "\n\t\t\t\t\t\t\t\tPress any key to go back to Manage Users Menu...";
 	system("pause>0");
 	cout << "\a";
-	ShowManageUsersSecreen();
+	ShowManageUsersScreen();
 }
 
-short ReadMainMenueOption()
+short ReadMainMenuOption()
 {
 	short Choice = 0;
 	cout << "\t\t\t\t\t\t\t\tChoose what do want to do? [1 to 9]? ";
@@ -419,7 +419,7 @@ short ReadMainMenueOption()
 	return Choice;
 }
 
-short ReadTransactionsMenueOption()
+short ReadTransactionsMenuOption()
 {
 	short Choice = 0;
 	cout << "\n\t\t\t\t\t\t\t\tChoose what do want to do? [1 to 4]? ";
@@ -428,7 +428,7 @@ short ReadTransactionsMenueOption()
 	return Choice;
 }
 
-short ReadManageUsersMenueOption()
+short ReadManageUsersMenuOption()
 {
 	short Choice = 0;
 	cout << "\n\t\t\t\t\t\t\t\tChoose what do want to do? [1 to 6]? ";
@@ -568,7 +568,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pListClients;
+		Permissions += enMainMenuPermissions::pListClients;
 	}
 
 
@@ -577,7 +577,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pAddNewClient;
+		Permissions += enMainMenuPermissions::pAddNewClient;
 	}
 
 
@@ -586,7 +586,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pDeleteClient;
+		Permissions += enMainMenuPermissions::pDeleteClient;
 	}
 
 
@@ -595,7 +595,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pUpdateClients;
+		Permissions += enMainMenuPermissions::pUpdateClients;
 	}
 
 
@@ -604,7 +604,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pFindClient;
+		Permissions += enMainMenuPermissions::pFindClient;
 	}
 
 
@@ -613,7 +613,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pTranactions;
+		Permissions += enMainMenuPermissions::pTranactions;
 	}
 
 
@@ -622,7 +622,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pManageUsers;
+		Permissions += enMainMenuPermissions::pManageUsers;
 	}
 
 
@@ -631,7 +631,7 @@ int ReadPermissionsToSet()
 
 	if (tolower(Yes_No) == 'y')
 	{
-		Permissions += enMainMenuePermissions::pATMSystem;
+		Permissions += enMainMenuPermissions::pATMSystem;
 	}
 
 	return Permissions;
@@ -1093,11 +1093,11 @@ void ShowTotalBalance()
 	cout << "\t\t\t\t\t\t\t\t\t\t Total Balance = " << TotalBalances << "";
 }
 
-void PerformTransactionsMenueOption(enTransactionsMenueOption TransactionsMenueOption)
+void PerformTransactionsMenuOption(enTransactionsMenuOption TransactionsMenuOption)
 {
-	switch (TransactionsMenueOption)
+	switch (TransactionsMenuOption)
 	{
-	case enTransactionsMenueOption::Deposit:
+	case enTransactionsMenuOption::Deposit:
 	{
 		system("cls");
 		ShowDepositScreen();
@@ -1105,7 +1105,7 @@ void PerformTransactionsMenueOption(enTransactionsMenueOption TransactionsMenueO
 		break;
 	}
 
-	case enTransactionsMenueOption::Withdraw:
+	case enTransactionsMenuOption::Withdraw:
 	{
 		system("cls");
 		ShowWithdrawScreen();
@@ -1113,7 +1113,7 @@ void PerformTransactionsMenueOption(enTransactionsMenueOption TransactionsMenueO
 		break;
 	}
 
-	case enTransactionsMenueOption::TotalBalances:
+	case enTransactionsMenuOption::TotalBalances:
 	{
 		system("cls");
 		ShowTotalBalance();
@@ -1121,9 +1121,9 @@ void PerformTransactionsMenueOption(enTransactionsMenueOption TransactionsMenueO
 		break;
 	}
 
-	case enTransactionsMenueOption::MainMenue:
+	case enTransactionsMenuOption::MainMenu:
 	{
-		ShowMainMenue();
+		ShowMainMenu();
 		break;
 	}
 
@@ -1146,9 +1146,9 @@ void ShowAccessDeniedMessage()
 	ChangeColour(7);
 }
 
-bool CheckAccessPermission(enMainMenuePermissions Permission)
+bool CheckAccessPermission(enMainMenuPermissions Permission)
 {
-	if (CurrentUser.Permissions == enMainMenuePermissions::eAll)
+	if (CurrentUser.Permissions == enMainMenuPermissions::eAll)
 		return true;
 
 
@@ -1162,7 +1162,7 @@ bool CheckAccessPermission(enMainMenuePermissions Permission)
 
 void ShowAllClientsScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pListClients))
+	if (!CheckAccessPermission(enMainMenuPermissions::pListClients))
 	{
 		ShowAccessDeniedMessage();
 		return;
@@ -1205,7 +1205,7 @@ void ShowAllClientsScreen()
 
 void ShowAddNewClientsScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pAddNewClient))
+	if (!CheckAccessPermission(enMainMenuPermissions::pAddNewClient))
 	{
 		ShowAccessDeniedMessage();
 		return;
@@ -1226,7 +1226,7 @@ void ShowAddNewClientsScreen()
 
 void ShowDeleteClientScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pDeleteClient))
+	if (!CheckAccessPermission(enMainMenuPermissions::pDeleteClient))
 	{
 		ShowAccessDeniedMessage();
 		return;
@@ -1250,7 +1250,7 @@ void ShowDeleteClientScreen()
 
 void ShowUpdateClientScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pUpdateClients))
+	if (!CheckAccessPermission(enMainMenuPermissions::pUpdateClients))
 	{
 		ShowAccessDeniedMessage();
 		return;
@@ -1275,7 +1275,7 @@ void ShowUpdateClientScreen()
 
 void ShowFindClientScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pFindClient))
+	if (!CheckAccessPermission(enMainMenuPermissions::pFindClient))
 	{
 		ShowAccessDeniedMessage();
 		return;
@@ -1313,9 +1313,9 @@ void ShowFindClientScreen()
 	}
 }
 
-void ShowTransactionsMenueScreen()
+void ShowTransactionsMenuScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pTranactions))
+	if (!CheckAccessPermission(enMainMenuPermissions::pTranactions))
 	{
 		ShowAccessDeniedMessage();
 		GoBackToMainScreen();
@@ -1327,7 +1327,7 @@ void ShowTransactionsMenueScreen()
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
-	cout << "\t\t\t\t\t\t\t\t\t       * * * TRANSACTION MENUE * * *\n";
+	cout << "\t\t\t\t\t\t\t\t\t       * * * TRANSACTION Menu * * *\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
@@ -1335,18 +1335,18 @@ void ShowTransactionsMenueScreen()
 	cout << "\t\t\t\t\t\t\t\t[1] Deposit.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[2] Withdraw.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[3] Total Balances.\n";
-	cout << "\n\t\t\t\t\t\t\t\t[4] Main Menue.\n";
+	cout << "\n\t\t\t\t\t\t\t\t[4] Main Menu.\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
 
-	PerformTransactionsMenueOption((enTransactionsMenueOption)ReadTransactionsMenueOption());
+	PerformTransactionsMenuOption((enTransactionsMenuOption)ReadTransactionsMenuOption());
 }
 
-void ShowManageUsersSecreen()
+void ShowManageUsersScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pManageUsers))
+	if (!CheckAccessPermission(enMainMenuPermissions::pManageUsers))
 	{
 		ShowAccessDeniedMessage();
 		GoBackToMainScreen();
@@ -1360,7 +1360,7 @@ void ShowManageUsersSecreen()
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
-	cout << "\t\t\t\t\t\t\t\t\t       * * * MANAGE USER MENUE * * *\n";
+	cout << "\t\t\t\t\t\t\t\t\t       * * * MANAGE USER Menu * * *\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
@@ -1370,12 +1370,12 @@ void ShowManageUsersSecreen()
 	cout << "\n\t\t\t\t\t\t\t\t[3] Delete User.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[4] Update User.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[5] Find User.\n";
-	cout << "\n\t\t\t\t\t\t\t\t[6] Main Menue.\n";
+	cout << "\n\t\t\t\t\t\t\t\t[6] Main Menu.\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
-	PerformManageUsersMenueOption((enManageUsersMenueOption)ReadManageUsersMenueOption());
+	PerformManageUsersMenuOption((enManageUsersMenuOption)ReadManageUsersMenuOption());
 }
 
 void ShowListUsersScreen()
@@ -1668,7 +1668,7 @@ void PerfromQuickWithdrawOption(short QuickWithDrawOption)
 	{
 		AmountExceeds();
 		system("cls");
-		ShowQuickWithdarwScreen();
+		ShowQuickWithdrawScreen();
 		return;
 	}
 
@@ -1677,7 +1677,7 @@ void PerfromQuickWithdrawOption(short QuickWithDrawOption)
 	CurrentClient.AcountBalance -= Amount;
 }
 
-void ShowQuickWithdarwScreen()
+void ShowQuickWithdrawScreen()
 {
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
@@ -1733,7 +1733,7 @@ void PerfromNormalWithdrawOption()
 	CurrentClient.AcountBalance -= Amount;
 }
 
-void ShowNormalWithdarwScreen()
+void ShowNormalWithdrawScreen()
 {
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
@@ -1865,27 +1865,27 @@ void ShowChangePinCodeScreen()
 	PerfromChangePinCodeOption();
 }
 
-void PerformATMMainMenueOption(enATMMainMenueOption ATMMainMenueOption)
+void PerformATMMainMenuOption(enATMMainMenuOption ATMMainMenuOption)
 {
-	switch (ATMMainMenueOption)
+	switch (ATMMainMenuOption)
 	{
-	case enATMMainMenueOption::QuickWithdarw:
+	case enATMMainMenuOption::QuickWithdraw:
 	{
 		system("cls");
-		ShowQuickWithdarwScreen();
+		ShowQuickWithdrawScreen();
 		GoBackToATMMainScreen();
 		break;
 	}
 
-	case enATMMainMenueOption::NormalWithdarw:
+	case enATMMainMenuOption::NormalWithdraw:
 	{
 		system("cls");
-		ShowNormalWithdarwScreen();
+		ShowNormalWithdrawScreen();
 		GoBackToATMMainScreen();
 		break;
 	}
 
-	case enATMMainMenueOption::ATMDeposit:
+	case enATMMainMenuOption::ATMDeposit:
 	{
 		system("cls");
 		ShowATMDepositScreen();
@@ -1893,7 +1893,7 @@ void PerformATMMainMenueOption(enATMMainMenueOption ATMMainMenueOption)
 		break;
 	}
 
-	case enATMMainMenueOption::ATMTotalBalances:
+	case enATMMainMenuOption::ATMTotalBalances:
 	{
 		system("cls");
 		ShowCheckBalanceScreen();
@@ -1901,7 +1901,7 @@ void PerformATMMainMenueOption(enATMMainMenueOption ATMMainMenueOption)
 		break;
 	}
 
-	case enATMMainMenueOption::ChangePinCode:
+	case enATMMainMenuOption::ChangePinCode:
 	{
 		system("cls");
 		ShowChangePinCodeScreen();
@@ -1910,10 +1910,10 @@ void PerformATMMainMenueOption(enATMMainMenueOption ATMMainMenueOption)
 	}
 
 
-	case enATMMainMenueOption::Mainn:
+	case enATMMainMenuOption::Mainn:
 	{
 		system("cls");
-		ShowMainMenue();
+		ShowMainMenu();
 		break;
 	}
 
@@ -1921,9 +1921,9 @@ void PerformATMMainMenueOption(enATMMainMenueOption ATMMainMenueOption)
 
 }
 
-void ShowATMMainMenueScreen()
+void ShowATMMainMenuScreen()
 {
-	if (!CheckAccessPermission(enMainMenuePermissions::pATMSystem))
+	if (!CheckAccessPermission(enMainMenuPermissions::pATMSystem))
 	{
 		ShowAccessDeniedMessage();
 		GoBackToMainScreen();
@@ -1937,23 +1937,23 @@ void ShowATMMainMenueScreen()
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
-	cout << "\t\t\t\t\t\t\t\t\t  * * * ATM MAIN MENUE SCREEN * * *\n";
+	cout << "\t\t\t\t\t\t\t\t\t  * * * ATM MAIN Menu SCREEN * * *\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
-	cout << "\t\t\t\t\t\t\t\t[1] Quick Withdarw.\n";
-	cout << "\n\t\t\t\t\t\t\t\t[2] Normal Withdarw.\n";
+	cout << "\t\t\t\t\t\t\t\t[1] Quick Withdraw.\n";
+	cout << "\n\t\t\t\t\t\t\t\t[2] Normal Withdraw.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[3] Deposit.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[4] Check Balance.\n";
 	cout << "\n\t\t\t\t\t\t\t\t[5] Change PinCode.\n";
-	cout << "\n\t\t\t\t\t\t\t\t[6] Main Menue.\n";
+	cout << "\n\t\t\t\t\t\t\t\t[6] Main Menu.\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 	cout << "\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
 
-	PerformATMMainMenueOption((enATMMainMenueOption)ReadATMMainMenueOption());
+	PerformATMMainMenuOption((enATMMainMenuOption)ReadATMMainMenuOption());
 }
 
 bool FindClientByAccountNumberAndPinCode(string AccountNumber, string PinCode, strClients& Client)
@@ -1993,7 +1993,7 @@ void LoginATMSystem()
 		cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 		cout << "\t\t\t\t\t\t\t\t______________________________\n";
 		ChangeColour(7);
-		cout << "\t\t\t\t\t\t\t\t\t * * * LOGIN TO ATM MENUE SCREEN * * *\n";
+		cout << "\t\t\t\t\t\t\t\t\t * * * LOGIN TO ATM Menu SCREEN * * *\n";
 		ChangeColour(9);
 		cout << "\t\t\t\t\t\t\t\t______________________________________________________\n";
 		cout << "\t\t\t\t\t\t\t\t______________________________\n";
@@ -2014,14 +2014,14 @@ void LoginATMSystem()
 
 	} while (LoginFaild);
 
-	ShowATMMainMenueScreen();
+	ShowATMMainMenuScreen();
 }
 
-void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
+void PerformManageUsersMenuOption(enManageUsersMenuOption ManageUsers)
 {
 	switch (ManageUsers)
 	{
-	case enManageUsersMenueOption::ListUsers:
+	case enManageUsersMenuOption::ListUsers:
 	{
 		system("cls");
 		ShowListUsersScreen();
@@ -2029,7 +2029,7 @@ void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
 		break;
 	}
 
-	case enManageUsersMenueOption::AddUsers:
+	case enManageUsersMenuOption::AddUsers:
 	{
 		system("cls");
 		ShowAddNewUsersScreen();
@@ -2037,7 +2037,7 @@ void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
 		break;
 	}
 
-	case enManageUsersMenueOption::DeleteUesrs:
+	case enManageUsersMenuOption::DeleteUesrs:
 	{
 		system("cls");
 		ShowDeleteUserScreen();
@@ -2045,7 +2045,7 @@ void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
 		break;
 	}
 
-	case enManageUsersMenueOption::UpdateUsers:
+	case enManageUsersMenuOption::UpdateUsers:
 	{
 		system("cls");
 		ShowUpdateUserScreen();
@@ -2053,7 +2053,7 @@ void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
 		break;
 	}
 
-	case enManageUsersMenueOption::FindUsers:
+	case enManageUsersMenuOption::FindUsers:
 	{
 		system("cls");
 		ShowFindUserScreen();
@@ -2061,9 +2061,9 @@ void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
 		break;
 	}
 
-	case enManageUsersMenueOption::Main:
+	case enManageUsersMenuOption::Main:
 	{
-		ShowMainMenue();
+		ShowMainMenu();
 		break;
 	}
 
@@ -2071,11 +2071,11 @@ void PerformManageUsersMenueOption(enManageUsersMenueOption ManageUsers)
 
 }
 
-void PerformMainMenueOption(enMainMenueOption MainMenueOption)
+void PerformMainMenuOption(enMainMenuOption MainMenuOption)
 {
-	switch (MainMenueOption)
+	switch (MainMenuOption)
 	{
-	case enMainMenueOption::Show:
+	case enMainMenuOption::Show:
 	{
 		system("cls");
 		ShowAllClientsScreen();
@@ -2083,7 +2083,7 @@ void PerformMainMenueOption(enMainMenueOption MainMenueOption)
 		break;
 	}
 
-	case enMainMenueOption::Add:
+	case enMainMenuOption::Add:
 	{
 		system("cls");
 		ShowAddNewClientsScreen();
@@ -2091,7 +2091,7 @@ void PerformMainMenueOption(enMainMenueOption MainMenueOption)
 		break;
 	}
 
-	case enMainMenueOption::Delete:
+	case enMainMenuOption::Delete:
 	{
 		system("cls");
 		ShowDeleteClientScreen();
@@ -2099,7 +2099,7 @@ void PerformMainMenueOption(enMainMenueOption MainMenueOption)
 		break;
 	}
 
-	case enMainMenueOption::Update:
+	case enMainMenuOption::Update:
 	{
 		system("cls");
 		ShowUpdateClientScreen();
@@ -2107,7 +2107,7 @@ void PerformMainMenueOption(enMainMenueOption MainMenueOption)
 		break;
 	}
 
-	case enMainMenueOption::Find:
+	case enMainMenuOption::Find:
 	{
 		system("cls");
 		ShowFindClientScreen();
@@ -2115,28 +2115,28 @@ void PerformMainMenueOption(enMainMenueOption MainMenueOption)
 		break;
 	}
 
-	case enMainMenueOption::Transactions:
+	case enMainMenuOption::Transactions:
 	{
 		system("cls");
-		ShowTransactionsMenueScreen();
+		ShowTransactionsMenuScreen();
 		break;
 	}
 
-	case enMainMenueOption::ManageUsers:
+	case enMainMenuOption::ManageUsers:
 	{
 		system("cls");
-		ShowManageUsersSecreen();
+		ShowManageUsersScreen();
 		break;
 	}
 
-	case enMainMenueOption::ATMSystem:
+	case enMainMenuOption::ATMSystem:
 	{
 		system("cls");
 		LoginATMSystem();
 		break;
 	}
 
-	case enMainMenueOption::Logout:
+	case enMainMenuOption::Logout:
 	{
 		system("cls");
 		Login();
@@ -2147,13 +2147,13 @@ void PerformMainMenueOption(enMainMenueOption MainMenueOption)
 
 }
 
-void ShowMainMenue()
+void ShowMainMenu()
 {
 	system("cls");
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
-	cout << "\t\t\t\t\t\t\t\t\t\t  * * * MAIN MENUE * * *\n";
+	cout << "\t\t\t\t\t\t\t\t\t\t  * * * MAIN Menu * * *\n";
 	ChangeColour(9);
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
@@ -2170,7 +2170,7 @@ void ShowMainMenue()
 	cout << "\t\t\t\t\t\t\t\t______________________________________________________\n\t\t\t\t\t\t\t\t______________________________\n";
 	ChangeColour(7);
 
-	PerformMainMenueOption((enMainMenueOption)ReadMainMenueOption());
+	PerformMainMenuOption((enMainMenuOption)ReadMainMenuOption());
 }
 
 bool FindUserByUsernameAndPassword(string Username, string Password, strUsers& User)
@@ -2358,7 +2358,7 @@ void Login()
 
 	} while (LoginFaild);
 
-	ShowMainMenue();
+	ShowMainMenu();
 
 
 }
